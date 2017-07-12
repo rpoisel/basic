@@ -1,3 +1,5 @@
+/* see: http://www.flipcode.com/archives/_kbhit_for_Linux.shtml */
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <sys/select.h>
@@ -9,7 +11,7 @@ int kbhit(void) {
   static bool initialized = false;
 
   if (! initialized) {
-    // Use termios to turn off line buffering
+    /* Use termios to turn off line buffering */
     struct termios term;
     tcgetattr(STDIN, &term);
     term.c_lflag &= ~ICANON;
